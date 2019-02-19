@@ -3,7 +3,7 @@ pip install -r requirements.txt  --quiet
 
 : Set environment variables
 SET ENVIRONMENT=DEV
-SET RESULTS_FOLDER=reports
+SET RESULTS_FOLDER=report
 SET THREADS_COUNT=4
 
 : Execute tests with Allure report

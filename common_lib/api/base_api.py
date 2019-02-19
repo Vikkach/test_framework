@@ -2,9 +2,10 @@ import os
 import json
 import requests
 from config.config_parser import ConfigParser
+from common_lib.base_logger import BaseLogger
 
 
-class BaseAPI:
+class BaseAPI(BaseLogger):
     env_name = os.environ['ENVIRONMENT']
 
     def __init__(self):
@@ -17,7 +18,16 @@ class BaseAPI:
 
     @staticmethod
     def get(url):
+        BaseLogger.get_info_log('Sending GET url: {}.'.format(url))
         response = requests.get(url)
+        return response
+
+    def post(self, url, body):
+        BaseLogger.get_info_log('Sending POST url: {} body: {}.'.format(url, body))
+        response = requests.post(url, data=body)
+        parsed_response = self.parse_response_to_json(response)
+        BaseLogger.get_info_log('Received "{}".'.format(response))
+        BaseLogger.get_info_log('Response body "{}".'.format(parsed_response))
         return response
 
     @staticmethod
