@@ -1,5 +1,9 @@
-class UserDataChecker:
+from common_lib.api.base_data_checker import BaseDataChecker
+
+
+class UserDataChecker(BaseDataChecker):
     def check_created_user(self, input_user_data, output_user_data):
+        assert output_user_data.get('id')
         self.compare_user_names(input_user_data, output_user_data)
         self.compare_user_job(input_user_data, output_user_data)
 

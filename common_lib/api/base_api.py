@@ -34,4 +34,8 @@ class BaseAPI(BaseLogger):
     def parse_response_to_json(response):
         return response.json()
 
+    @staticmethod
+    def ger_response_status_code(response):
+        return response.status_code
+
 
