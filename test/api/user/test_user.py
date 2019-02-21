@@ -19,7 +19,7 @@ class TestUser(TestBaseUserAPI):
             users_list = self.user_data_parser.get_user_list(response)
             assert len(users_list) >= 1
 
-    @title('Test POST user')
+    @title('Test create user')
     def test_create_user(self):
         with step('Generate test user'):
             user_data = self.user_data_generator.generate_user()
