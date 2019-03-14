@@ -6,6 +6,7 @@ jobs:
       - image: circleci/python:3.7
         environment:
           ENVIRONMENT: DEV
+          RESULTS_FOLDER: reports
 
     working_directory: ~/repo
 
@@ -25,4 +26,5 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m pytest -n=4 test\api\user\test_user.py
+            python -m pytest test/api --alluredir $RESULTS_FOLDER
+            allure serve $RESULTS_FOLDER
