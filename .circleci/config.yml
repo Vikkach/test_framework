@@ -4,6 +4,8 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7
+        environment:
+          ENVIRONMENT: DEV
 
     working_directory: ~/repo
 
@@ -23,5 +25,4 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            ENVIRONMENT: DEV
             python -m pytest -n=4 test\api\user\test_user.py
