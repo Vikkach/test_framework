@@ -18,11 +18,10 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
             pip install --upgrade pip
-            SET ENVIRONMENT=DEV
-            SET THREADS_COUNT=4
       # Step 3: run tests
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m pytest -n=%THREADS_COUNT% test\api\user\test_user.py
+            ENVIRONMENT: DEV
+            python -m pytest -n=4 test\api\user\test_user.py
